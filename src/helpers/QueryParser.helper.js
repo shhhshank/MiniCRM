@@ -9,7 +9,11 @@ const buildQuery = (filters) => {
   const orConditions = [];
 
   filters.forEach((filter) => {
-    const { field, operator, value, logicalOperator } = filter;
+    const field = filter.field;
+    const operator = filter.operator;
+    const value = field == 'lastVisit' ? parseDateString(filter.value) : filter.value;
+    const logicalOperator = filter.logicalOperator;
+
 
     let condition;
     switch (operator) {
@@ -49,14 +53,28 @@ const buildQuery = (filters) => {
   });
 
   if (andConditions.length > 0) {
-    query.$and = andConditions;
+    if (orConditions.length > 0) {
+      query.$or = [
+        { $or: orConditions },
+        { $and: andConditions }
+      ]
+    } else {
+      query.$and = andConditions;
+    }
+  } else {
+    if (orConditions.length > 0) {
+      query.$or = orConditions;
+    }
   }
 
-  if (orConditions.length > 0) {
-    query.$or = orConditions;
-  }
 
   return query;
+};
+
+const parseDateString = (dateString) => {
+  const [month, day, year] = dateString.split('/');
+  const date = new Date(year, month - 1, day);
+  return date;
 };
 
 module.exports = { buildQuery };

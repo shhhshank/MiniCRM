@@ -7,8 +7,9 @@ class Send {
   }
 
   execute(payload) {
-    this.rabbit.connect(`amqp://localhost`, (error, connection) => {
+    this.rabbit.connect(`amqps://mraajhud:okUIhk3hbWdYHPlraNreSKRjcW8WCczb@puffin.rmq2.cloudamqp.com/mraajhud`, (error, connection) => {
       if (error) {
+        console.log(error)
         throw error;
       }
 

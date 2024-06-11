@@ -4,10 +4,9 @@ const customerSchema = new mongoose.Schema({
   name: String,
   email: String,
   age: Number,
-  city: { type: mongoose.Schema.Types.ObjectId, ref: "City" },
-  totalSpent: Number,
-  totalVisits: Number,
-  lastVisit: Date,
+  totalSpent: { type: Number, default: 0 },
+  totalVisits: { type: Number, default: 0 },
+  lastVisit: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model("Customer", customerSchema);
+module.exports = mongoose.model("customer", customerSchema, "customer");

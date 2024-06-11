@@ -7,7 +7,7 @@ class Receive {
   }
 
   execute(consumer) {
-    amqp.connect(`amqp://localhost/`, (error, connection) => {
+    amqp.connect(`amqps://mraajhud:okUIhk3hbWdYHPlraNreSKRjcW8WCczb@puffin.rmq2.cloudamqp.com/mraajhud`, (error, connection) => {
       if (error) {
         throw error;
       }
