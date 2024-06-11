@@ -26,4 +26,4 @@ jobs:
       - name: Delete old container
         run: docker rm -f minicrm-container
       - name: Run docker container
-        run: docker run -d -p 5000:5000 -name minicrm-container shhhshank/minicrm
+        run: docker run -d -p 5000:5000 --name minicrm-container shhhshank/minicrm
