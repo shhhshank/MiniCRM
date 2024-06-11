@@ -7,7 +7,7 @@ class Send {
   }
 
   execute(payload) {
-    this.rabbit.connect(`amqps://mraajhud:okUIhk3hbWdYHPlraNreSKRjcW8WCczb@puffin.rmq2.cloudamqp.com/mraajhud`, (error, connection) => {
+    this.rabbit.connect(process.env.RABBIT_URL_AWS, (error, connection) => {
       if (error) {
         console.log(error)
         throw error;
@@ -20,10 +20,12 @@ class Send {
 
         var data = JSON.stringify(payload);
         channel.assertQueue(this.queueName, {
-          durable: false,
+          durable: true,
         });
 
-        channel.sendToQueue(this.queueName, Buffer.from(data));
+        channel.sendToQueue(this.queueName, Buffer.from(data), {
+          persistent: true
+        });
       });
     });
   }

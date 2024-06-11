@@ -7,7 +7,7 @@ class Receive {
   }
 
   execute(consumer) {
-    amqp.connect(`amqps://mraajhud:okUIhk3hbWdYHPlraNreSKRjcW8WCczb@puffin.rmq2.cloudamqp.com/mraajhud`, (error, connection) => {
+    amqp.connect(process.env.RABBIT_URL_AWS, (error, connection) => {
       if (error) {
         throw error;
       }
@@ -16,7 +16,7 @@ class Receive {
           throw error1;
         }
         channel.assertQueue(this.queueName, {
-          durable: false,
+          durable: true,
         });
         channel.consume(this.queueName, consumer, {
           noAck: true,
