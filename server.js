@@ -25,18 +25,6 @@ app.use(morgan('dev'))
 
 const PORT = process.env.PORT || 5000;
 
-
-app.get('/', (req, res) => {
-  res.json({ message: "running" })
-})
-
-app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
-
-});
-
-/*
-
 app.use("/customer", customerRouter);
 app.use("/campaign", campaignRouter)
 app.use("/communication", communcationRouter)
@@ -89,4 +77,3 @@ function split(thing) {
       : '<complex:' + thing.toString() + '>'
   }
 }
-  */
