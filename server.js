@@ -25,6 +25,12 @@ app.use(morgan('dev'))
 
 const PORT = process.env.PORT || 5000;
 
+app.use("/", (req, res) => {
+  res.json({
+    message: "Server up and running"
+  })
+})
+
 app.use("/customer", customerRouter);
 app.use("/campaign", campaignRouter)
 app.use("/communication", communcationRouter)
