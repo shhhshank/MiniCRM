@@ -9,5 +9,5 @@ exports.addOrder = async (_order) => {
 };
 
 exports.getAll = async () => {
-  return await Order.find().populate('customerId')
+  return await Order.find().populate('customerId').sort('-date').exec()
 }

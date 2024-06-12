@@ -74,7 +74,8 @@ exports.executeCampaign = async ({ campaignId }) => {
 }
 
 exports.getCampaigns = async () => {
-    const campaigns = await Campaign.find().populate('audience');
+    // const campaigns = await Campaign.find().populate('audience');
+    const campaigns = await Campaign.find().populate('audience').sort('-createdAt').exec()
     return campaigns;
 };
 

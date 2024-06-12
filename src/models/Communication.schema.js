@@ -5,7 +5,8 @@ const communicationLogSchema = new mongoose.Schema({
     campaignId: { type: mongoose.Schema.Types.ObjectId, ref: "campaign" },
     status: String,
     email: String,
-    message: String
+    message: String,
+    createdAt: { type: Date, default: Date.now }
 });
 
 module.exports = mongoose.model("communication_log", communicationLogSchema, "communication_log");

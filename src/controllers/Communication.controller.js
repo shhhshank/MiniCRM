@@ -8,7 +8,7 @@ exports.addCommunicationLog = async (_communicationLog) => {
 };
 
 exports.getAllLogs = async () => {
-    return await CommunicationLog.find().populate(['customerId', 'campaignId'])
+    return await CommunicationLog.find().populate(['customerId', 'campaignId']).sort('-createdAt').exec()
 }
 exports.addBulkCommunicationLog = async (communicationLogs) => {
     return await CommunicationLog.insertMany(communicationLogs);
