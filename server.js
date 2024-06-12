@@ -25,11 +25,7 @@ app.use(morgan('dev'))
 
 const PORT = process.env.PORT || 5000;
 
-app.use("/", (req, res) => {
-  res.json({
-    message: "Server up and running"
-  })
-})
+
 
 app.use("/customer", customerRouter);
 app.use("/campaign", campaignRouter)
@@ -38,6 +34,11 @@ app.use("/order", orderRouter)
 app.use("/vendor", vendorRouter)
 app.use("/visit", visitRouter)
 
+app.use("/", (req, res) => {
+  res.json({
+    message: "Server up and running"
+  })
+})
 
 mongoose.pluralize(null);
 
