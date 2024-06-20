@@ -15,6 +15,7 @@ exports.addBulkCommunicationLog = async (communicationLogs) => {
 };
 
 
+
 exports.updateBulkCommunicationLog = async (communicationLogs) => {
     const bulkOpsComms = communicationLogs.map(data => {
         return {

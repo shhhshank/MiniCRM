@@ -6,6 +6,7 @@ const BATCH_INTERVAL = 10000;
 
 let messages = []
 
+
 const rootConsumer = async (payload) => {
     if (payload != null) {
         let log = JSON.parse(payload.content.toString());
