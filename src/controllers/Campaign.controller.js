@@ -34,7 +34,7 @@ exports.executeCampaign = async ({ campaignId }) => {
         const communicationLogs = [];
 
         for (let customer of campaign.audience) {
-            const personalizedMessage = templateParser.replaceTemplate(campaign.message, { name: customer.name, age:customer.age });
+            const personalizedMessage = templateParser.replaceTemplate(campaign.message, { name: customer.name, age:customer.age, totalSpent:customer.totalSpent });
             const hookData = {
                 campaignId: campaignId,
                 customerId: customer._id
